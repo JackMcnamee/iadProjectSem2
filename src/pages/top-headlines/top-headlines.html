@@ -1,25 +1,47 @@
+<!--
+  Generated template for the TopHeadlinesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
 <ion-header>
-  <ion-navbar color = "shadeLight">
-    <ion-title>
-      Irish News App
-    </ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>You selected: {{newsPageTitle}}</ion-title>
+    </ion-navbar>
 </ion-header>
 
-<!--<ion-content padding>
-    <button ion-button block (tap)="menutoggle()" color="medium">News Options</button>
-  </ion-content>
+<ion-content padding>
+  <button ion-button block menuToggle color="medium">Click here for more News Categories</button>
+  <ion-list>
+    <ion-item *ngFor="let article of articles"> 
+        <ion-thumbnail item-start>
+            <img src={{article.urlToImage}}>
+        </ion-thumbnail>
+        <h2><a href={{article.url}}>{{article.title}}</a></h2> 
+        <p>{{article.description}}</p>
+        <ion-row>
+            <ion-icon name="time"></ion-icon>
+            <p>{{article.publishedAt}}</p>
+        </ion-row>
+        <br>
+    </ion-item>
+  </ion-list>
+</ion-content>
 
-<ion-menu [content]="homeContent">
+<ion-menu [content]="headLinesContent" id="topHeadlinesMenu">
     <ion-header>
       <ion-toolbar>
         <ion-title>News Categories</ion-title>
       </ion-toolbar>
-    </ion-header>-->
-
+    </ion-header>
 <ion-content padding class="bg-style">
 
   <ion-list radio-group [(ngModel)]="newsPageTitle">
+
+    <ion-item color="medium">
+      <ion-label inset="true">Home</ion-label>
+      <ion-radio (click)="openHomePage()"></ion-radio>
+    </ion-item>
 
     <!--Top Headlines-->
     <ion-item color="light">
@@ -53,6 +75,7 @@
 
   </ion-list>
 </ion-content>
-<!--</ion-menu>
+</ion-menu>
 
-<ion-nav id="nav" #homeContent [root]="rootPage"></ion-nav>-->
+<ion-nav id="nav" #headLinesContent [root]="rootPage"></ion-nav>
+

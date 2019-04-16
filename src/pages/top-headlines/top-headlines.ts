@@ -1,20 +1,33 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { NewsProvider } from '../../providers/news/news';
 import { Storage } from '@ionic/storage';
 import {MenuController} from 'ionic-angular';
+import { HomePage } from '../home/home';
 
+/**
+ * Generated class for the TopHeadlinesPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage()
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-top-headlines',
+  templateUrl: 'top-headlines.html',
 })
-export class HomePage {
+export class TopHeadlinesPage {
 
   articles:any = [];
   newsPageTitle:string;
 
-  constructor(public navCtrl: NavController, private newsProvider:NewsProvider, private storage: Storage, public menuCtrl: MenuController) {
-  
+  constructor(public navCtrl: NavController, public navParams: NavParams, private newsProvider:NewsProvider, private storage: Storage, public menuCtrl: MenuController) {
+    
+  }
+
+  openHomePage(){
+    this.navCtrl.setRoot(HomePage);
   }
 
   openTopHeadlinesPage(){
@@ -41,8 +54,12 @@ export class HomePage {
     this.storage.set("newsPageTitle", this.newsPageTitle);
     this.navCtrl.push('EntertainmentPage');
   }
+   
+  ionViewWillEnter() {
+    this.newsProvider.getTopHeadlines().subscribe((data)=>{
+      this.articles = data.articles;
+    });
 
-  ionViewWillEnter(){
     this.storage.get("newsPageTitle")
     .then((data) =>
     {
@@ -53,5 +70,7 @@ export class HomePage {
     })
   }
 
-    
+  ionViewDidLoad() {
+    this.menuCtrl.enable(true, 'topHeadlinesMenu');
+  }
 }

@@ -1,0 +1,77 @@
+
+<ion-header>
+    <ion-navbar>
+      <ion-title>You selected: {{newsPageTitle}}</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <button ion-button block menuToggle color="medium">Click here for more News Categories</button>
+    <ion-list>
+      <ion-item *ngFor="let article of articles"> 
+          <ion-thumbnail item-start>
+              <img src={{article.urlToImage}}>
+          </ion-thumbnail>
+          <h2><a href={{article.url}}>{{article.title}}</a></h2> 
+          <p>{{article.description}}</p>
+          <ion-row>
+              <ion-icon name="time"></ion-icon>
+              <p>{{article.publishedAt}}</p>
+          </ion-row>
+          <br>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  
+  <ion-menu [content]="sportsContent" id="sportsMenu">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>News Categories</ion-title>
+        </ion-toolbar>
+      </ion-header>
+  <ion-content padding class="bg-style">
+  
+    <ion-list radio-group [(ngModel)]="newsPageTitle">
+  
+      <ion-item color="medium">
+        <ion-label inset="true">Home</ion-label>
+        <ion-radio (click)="openHomePage()"></ion-radio>
+      </ion-item>
+  
+      <!--Top Headlines-->
+      <ion-item color="light">
+        <ion-label inset="true">Top Headlines</ion-label>
+        <ion-radio (click)="openTopHeadlinesPage()" value = "Top Headlines"></ion-radio>
+      </ion-item>
+  
+      <!--Business-->
+      <ion-item color="medium">
+        <ion-label inset="true">Business</ion-label>
+        <ion-radio (click)="openBusinessPage()" value = "Business"></ion-radio>
+      </ion-item>
+  
+      <!--Entertainment-->
+      <ion-item color="light">
+        <ion-label inset="true" >Entertainment</ion-label>
+        <ion-radio (click)="openEntertainmentPage()" value = "Entertainment"></ion-radio>
+      </ion-item>
+  
+      <!--Sports-->
+      <ion-item color="medium">
+        <ion-label inset="true">Sports</ion-label>
+        <ion-radio (click)="openSportsPage()" value = "Sports"></ion-radio>
+      </ion-item>
+  
+      <!--Technology-->
+      <ion-item color="light">
+        <ion-label inset="true">Technology</ion-label>
+        <ion-radio (click)="openTechnologyPage()" value = "Technology"></ion-radio>
+      </ion-item>
+  
+    </ion-list>
+  </ion-content>
+  </ion-menu>
+  
+  <ion-nav id="nav" #sportsContent [root]="rootPage"></ion-nav>
+  
+  
