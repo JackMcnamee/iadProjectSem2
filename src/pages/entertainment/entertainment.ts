@@ -61,6 +61,7 @@ export class EntertainmentPage {
       this.articles = data.articles;
     });
 
+    // Data Persistence
     this.storage.get("newsPageTitle")
     .then((data) =>
     {

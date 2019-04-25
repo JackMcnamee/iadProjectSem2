@@ -62,6 +62,7 @@ export class TechnologyPage {
       this.articles = data.articles;
     });
 
+    // Data Persistence
     this.storage.get("newsPageTitle")
     .then((data) =>
     {
@@ -72,6 +73,7 @@ export class TechnologyPage {
     })
   }
 
+  // menu
   ionViewDidLoad() {
     this.menuCtrl.enable(true, 'businessMenu');
   }

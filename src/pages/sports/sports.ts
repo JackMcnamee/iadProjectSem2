@@ -62,6 +62,7 @@ export class SportsPage {
       this.articles = data.articles;
     });
 
+    // Data Persistence
     this.storage.get("newsPageTitle")
     .then((data) =>
     {
@@ -72,6 +73,7 @@ export class SportsPage {
     })
   }
 
+  // menu
   ionViewDidLoad() {
     this.menuCtrl.enable(true, 'sportsMenu');
   }

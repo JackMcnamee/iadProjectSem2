@@ -6,19 +6,9 @@
   </ion-navbar>
 </ion-header>
 
-<!--<ion-content padding>
-    <button ion-button block (tap)="menutoggle()" color="medium">News Options</button>
-  </ion-content>
+<ion-content class="bg-style">
 
-<ion-menu [content]="homeContent">
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>News Categories</ion-title>
-      </ion-toolbar>
-    </ion-header>-->
-
-<ion-content padding class="bg-style">
-
+  <!--list for news categories-->
   <ion-list radio-group [(ngModel)]="newsPageTitle">
 
     <!--Top Headlines-->
@@ -53,6 +43,3 @@
 
   </ion-list>
 </ion-content>
-<!--</ion-menu>
-
-<ion-nav id="nav" #homeContent [root]="rootPage"></ion-nav>-->

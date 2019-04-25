@@ -60,6 +60,7 @@ export class TopHeadlinesPage {
       this.articles = data.articles;
     });
 
+    // Data Persistence
     this.storage.get("newsPageTitle")
     .then((data) =>
     {
@@ -70,6 +71,7 @@ export class TopHeadlinesPage {
     })
   }
 
+  // menu
   ionViewDidLoad() {
     this.menuCtrl.enable(true, 'topHeadlinesMenu');
   }
